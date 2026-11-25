@@ -1,0 +1,41 @@
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambientes virtuais
+venv/
+.venv/
+env/
+ENV/
+
+# Índice de busca (gerado por preparar_base.py no build)
+indice/
+# Cópia local dos sites oficiais (gerada pelo base_web.py no build e no servidor)
+indice_web/
+
+# Cache do modelo de embeddings (baixado no build)
+modelo_cache/
+.fastembed_cache/
+.cache/
+
+# Temporários da atualização da base
+*.pdf.tmp
+relatorio_atualizacao.md
+
+# Logs
+*.log
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs e editores
+.vscode/
+.idea/

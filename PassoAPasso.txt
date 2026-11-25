@@ -1,0 +1,131 @@
+1. Crie a pasta do projeto e coloque nela os arquivos (incluindo os PDFs numerados, ex.: 3-Perguntas&Respostas2_MEI.pdf)
+
+2. Abra a pasta do projeto no VS Code
+		2.1 Instale o Python, comando:
+			winget install 9NQ7512CXL7T -e --accept-source-agreements --accept-package-agreements --disable-interactivity
+
+3. Crie o arquivo .env (use o .env.example como modelo):
+		GROQ_API_KEY="ChaveApiAqui"
+
+4. Abra o terminal (ctrl '), crie e ative um ambiente virtual:
+		1: python -m venv venv
+		2: .\venv\Scripts\Activate.ps1 (após a ativação, deverá aparecer (venv) no início da linha do terminal)
+		3: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass (se o Windows não permitir a ativação)
+
+5. Instale as bibliotecas:
+		python -m pip install -r requirements.txt
+
+6. (Opcional) Gere o índice dos PDFs antes de iniciar. Se pular, ele é gerado na primeira execução:
+		python preparar_base.py
+
+7. Inicie o servidor:
+		python app.py
+	Abra no navegador: http://localhost:5000  (página inicial)  e  http://localhost:5000/chat  (chat)
+
+8. Logo da FMU: fica em static/logo-fmu.png (imagem com fundo transparente).
+
+9. Conferência com Sebrae e Receita Federal (já vem ligada):
+	- Depois de montar a resposta com os PDFs, o bot compara com os sites do Sebrae e da Receita Federal
+	  (SOMENTE esses dois; veja DOMINIOS_PERMITIDOS em verificador.py). Se um dado dos PDFs estiver
+	  desatualizado, ele gera uma nova resposta com base nos sites e avisa o usuário.
+	- Páginas oficiais já conhecidas ficam em fontes_oficiais.json (edite para incluir outras).
+	- Para desligar: VERIFICAR_SITES=0 no .env.  Testes offline: python testes.py
+
+10. Manter a base atualizada (PDFs):
+	- fontes_pdfs.json lista cada PDF da base e a URL oficial (Sebrae/Receita) de onde baixar a versão atual.
+	- python atualizar_base.py            -> baixa o que mudou e troca os PDFs (valida antes de substituir)
+	  python atualizar_base.py --simular  -> só mostra o que mudaria
+	  python atualizar_base.py --reindexar-> após atualizar, refaz o índice (uso local)
+	- Automático: .github/workflows/atualizar-base.yml roda toda segunda e abre um Pull Request se algum
+	  PDF mudou. Ao aprovar, o Render faz o deploy e refaz o índice. (Ative em Settings > Actions >
+	  General: "Read and write permissions" e "Allow GitHub Actions to create and approve pull requests".)
+	- O índice local também se refaz sozinho se algum PDF mudar (assinatura dos arquivos).
+	- Testes offline: python testes.py
+	- Só entram PDFs de 2026 em diante (ano_minimo em fontes_pdfs.json). python atualizar_base.py --auditar mostra
+	  o ano de cada PDF; --arquivar-antigos move os anteriores a 2026 para pdfs_arquivados/ (não são apagados).
+	- IMPORTANTE: rode  python atualizar_base.py  (ou o workflow) ANTES de publicar: sem isso a base fica só com
+	  os PDFs de 2026 que já estão na pasta.
+
+11. Baixar os PDFs agora (na sua máquina, com internet livre):
+	pip install pypdf
+	python atualizar_base.py
+	-> baixa os 3 PDFs gerais (MEI e Simei, IRPF 2026, Simples Nacional) para esta pasta, com os nomes
+	   4-Perguntas&Respostas3_MEI.pdf, 5-Impostos_PF_MEI.pdf e 7-Perguntas&Respostas_SimplesNacional.pdf.
+	-> o relatorio_atualizacao.md mostra o que foi baixado. Depois faça commit/deploy (o Render reindexa).
+
+12. Base sempre atualizada (sites + PDFs) — funciona sozinho, nada a configurar:
+	- No build do Render, preparar_base.py baixa as versões mais novas dos PDFs (atualizar_base.py), refaz o
+	  índice e faz a primeira coleta dos sites do Sebrae e da Receita Federal (base_web.py).
+	- Com o servidor no ar, a cada 12 h (BASE_WEB_HORAS) ele visita de novo os sites (fontes_oficiais.json:
+	  "paginas" e "rastrear"), guarda só o que trata de MEI/Receita Federal e confere se algum PDF da base
+	  ganhou versão nova no site; se ganhou, já passa a usar a nova, sem esperar deploy.
+	- Coletar agora, na sua máquina:  python base_web.py
+	- Ver o estado: http://localhost:5000/api/status  (campo "base_web")
+	- O GitHub Actions roda todo dia. Opcional (Settings > Secrets and variables > Actions):
+	    Variable PUBLICAR_DIRETO=true      -> publica os PDFs novos sem abrir Pull Request
+	    Secret  RENDER_DEPLOY_HOOK         -> pede um deploy por dia (o build traz PDFs e sites novos)
+	    Secrets FISCON_URL + BASE_WEB_TOKEN -> pede ao servidor uma coleta dos sites
+	      (crie a variável BASE_WEB_TOKEN com o mesmo valor no Render > Environment)
+
+13. Velocidade:
+	- A resposta aparece enquanto é escrita; a conferência com os sites roda logo depois (e em paralelo).
+	  Se algo estiver desatualizado, a resposta é trocada pela versão corrigida, com o aviso "Resposta atualizada".
+	- A conferência usa a cópia local dos sites (instantânea); só vai à internet se a cópia não tiver o assunto.
+	- Para voltar ao comportamento antigo (só mostrar depois de conferir): CONFERENCIA_MODO=antes
+
+14. Voz e Libras (nada a instalar; usa a mesma GROQ_API_KEY):
+	- Falar a pergunta: botão do microfone ao lado da caixa de texto. O navegador grava, para sozinho quando a
+	  pessoa fica em silêncio e envia o áudio para /api/voz/transcrever (Groq Whisper, em português, com
+	  vocabulário de MEI/Receita). Navegador sem gravador usa o reconhecimento de fala dele mesmo.
+	  O microfone só funciona em https (Render) ou em http://localhost.
+	- Ouvir a resposta: botão "Ouvir" em cada resposta (voz do próprio navegador, pt-BR). No menu de
+	  acessibilidade (ícone do bonequinho no topo do chat): ler todas as respostas, responder em voz quando
+	  a pergunta foi falada e a velocidade da voz.
+	- Libras: VLibras, o tradutor oficial do governo (vlibras.gov.br), nas duas páginas (ícone azul à direita).
+	  O botão "Libras" de cada resposta abre o tradutor e já traduz aquela resposta (o avatar sinaliza na hora;
+	  na 1ª vez o avatar 3D é baixado e pode levar até ~1 min em conexão lenta). Com o tradutor aberto, tocar em
+	  qualquer texto da página também traduz.
+	  Técnico (static/libras.js): usa a API do VLibras 7.x — VLibrasWidget.open() e vlibras.translateAndPlay().
+	  As versões antigas do widget usavam [vw-access-button]/[vw-plugin-wrapper], que não existem mais; por isso
+	  o botão dizia que o tradutor "não carregou". Botões com a classe "vlibras-links" funcionam normalmente com o
+	  tradutor aberto (sem ela, o VLibras intercepta o clique para traduzir o rótulo do botão).
+	  Se o site tiver Content-Security-Policy, libere script-src, frame-src, connect-src, img-src e font-src para
+	  https://vlibras.gov.br (e font-src para https://cdn.jsdelivr.net).
+
+15. Regras fiscais por ano-calendário (contas feitas pelo código, não pela IA):
+	- regras_fiscais.json guarda, por ano, os valores oficiais: teto e limite proporcional do MEI, salário mínimo,
+	  INSS/ICMS/ISS do DAS, prazo da DASN-SIMEI, regra dos 20% do desenquadramento, limites e prazo do IRPF e a
+	  extinção da DIRF. O regras_fiscais.py faz as contas (ex.: limite proporcional, excesso, % e data de efeito;
+	  34 mil x 35.584) e o resultado entra no prompt como "FATOS CALCULADOS", acima dos trechos dos PDFs.
+	- Depois que a IA responde, a resposta é conferida com esses fatos:
+	    * faltou um valor (ex.: R$ 86,05)            -> acrescenta "Conferência automática" no fim;
+	    * contradiz a regra (ex.: "precisa declarar" com 34 mil, efeito em 01/01/2027 com excesso acima de 20%,
+	      "não encontrei")                          -> a resposta é refeita só com os fatos.
+	  A "Resposta atualizada" pelos sites também é recusada se contradisser um fato.
+	- Os dados que o usuário informa (mês de abertura, faturamento, rendimentos, tipo de atividade) são lidos de
+	  TODA a conversa: "abri em julho de 2026" numa mensagem + "faturei 50 mil" na outra dá o mesmo cálculo.
+	- TODO INÍCIO DE ANO (ou quando a lei mudar), a equipe do NAF deve:
+	    1. atualizar regras_fiscais.json (novo ano em "mei" e "irpf"; o 2027 só vale quando "vigente" não for false);
+	    2. conferir cada valor na "fonte" e trocar "validado_naf" para true;
+	    3. rodar  python testes.py  (offline) e  python avaliar_casos.py  (com a GROQ_API_KEY; gera
+	       relatorio_reteste.md com os casos do relatório de testes para revisão antes da divulgação).
+	- Na tela, o menu "Detalhes da resposta" mostra o selo "Cálculo pelas regras oficiais de <ano>" com o
+	  resumo do cálculo e o link da fonte.
+
+16. Pesquisa nos sites oficiais para QUALQUER pergunta (pesquisa.py):
+	- Por que mudou: o DuckDuckGo bloqueia o servidor (anti-robô); sem ele, só eram achadas as páginas já listadas em
+	  fontes_oficiais.json, e a conferência dizia "nenhuma trata diretamente deste ponto" para quase tudo.
+	- Agora, sem depender de buscador externo nem de lista de perguntas:
+	    1. Catálogo de endereços: a cada coleta, o servidor lê os sitemaps do Sebrae, do blog do Sebrae RN e da Receita
+	       Federal e os menus da Receita/Simples Nacional (fontes_oficiais.json: "sitemaps" e "paginas_de_links").
+	       São ~1.200 endereços com título; o estado aparece em /api/status ("base_web" > "catalogo").
+	    2. Busca interna do blog do Sebrae RN ("buscas"), com as palavras da pergunta.
+	    3. Depois que a resposta é escrita, a conferência procura as páginas pelos termos DA RESPOSTA (ex.: "sócio",
+	       "atividade permitida") e pelo título (ex.: .../como-funciona-o-mei-caminhoneiro), lê as que faltam na hora e
+	       guarda na cópia local (a próxima pergunta parecida já é instantânea).
+	    4. Só vão para a comparação as páginas que tratam do assunto (palavras raras da pergunta valem mais que "MEI").
+	  As páginas do portal do Sebrae, que montam o texto por JavaScript, são lidas pelo JSON do próprio site.
+	- Ver o que a conferência escolhe para uma pergunta (com a resposta do bot, opcional):
+	    python diagnosticar_verificacao.py "Posso pegar empréstimo como MEI?" --rascunho "O MEI pode pedir crédito..."
+	- Ajustes (.env): PESQUISA_ATIVA=0 desliga; PESQUISA_LIMIAR=0.5 (rigor para "trata do assunto").
+	  VERIFICAR_BUSCA_DESCOBERTA=1 religa o DuckDuckGo (padrão agora é 0, porque ele bloqueia servidores).

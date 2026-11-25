@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10243c">
+  <meta name="description" content="MEI Orienta: uma central de orientação sobre formalização, impostos, DAS e obrigações do Microempreendedor Individual.">
+
+  <title>MEI Orienta | Central de orientação ao empreendedor</title>
+
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    try {
+      const tema = localStorage.getItem("chatbot-mei-tema");
+      if (tema === "dark" || tema === "light") {
+        document.documentElement.setAttribute("data-theme", tema);
+      }
+    } catch (erro) {}
+  </script>
+
+  <link rel="stylesheet" href="home.css?v=2">
+</head>
+
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="mei-header" id="cabecalho">
+    <div class="mei-container mei-header-content">
+
+      <a class="mei-brand" href="/" aria-label="MEI Orienta - Início">
+        <img src="icon.svg" alt="">
+        <span>MEI <strong>ORIENTA</strong></span>
+      </a>
+
+      <nav class="mei-navigation" aria-label="Navegação principal">
+        <a href="#consultas">Áreas de orientação</a>
+        <a href="#jornada">Jornada MEI</a>
+        <a href="#fontes">Fontes oficiais</a>
+      </nav>
+
+      <div class="mei-header-actions">
+        <button
+          type="button"
+          class="mei-theme-button botao-tema"
+          aria-label="Mudar tema"
+          title="Mudar tema"
+        >
+          <svg class="icone-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>
+          </svg>
+          <svg class="icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+          </svg>
+        </button>
+
+        <a class="mei-access-button" href="/chat">
+          Acessar assistente <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <a class="mei-fmu-link" href="https://portal.fmu.br/" target="_blank" rel="noopener" aria-label="Portal da FMU">
+        <img src="logo-fmu.png" alt="FMU">
+      </a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- APRESENTAÇÃO -->
+    <section class="mei-intro">
+      <div class="mei-container">
+
+        <div class="mei-intro-topline">
+          <span class="mei-overline">INFORMAÇÃO PARA QUEM EMPREENDE</span>
+          <span class="mei-edition">CENTRAL DE ORIENTAÇÃO DIGITAL</span>
+        </div>
+
+        <div class="mei-intro-content">
+          <p class="mei-intro-kicker">
+            MEI ORIENTA <span>— conhecimento ao seu alcance</span>
+          </p>
+
+          <h1>
+            Entenda seu negócio.<br>
+            <span>Decida com informação.</span>
+          </h1>
+
+          <div class="mei-intro-bottom">
+            <p>
+              Um espaço para esclarecer dúvidas sobre o Microempreendedor Individual,
+              compreender suas obrigações e encontrar informações sobre a Receita Federal
+              em uma linguagem simples e acessível.
+            </p>
+
+            <a href="/chat" class="mei-main-link">
+              Converse com o assistente
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="mei-intro-footer">
+          <div class="mei-live-status">
+            <span class="mei-live-dot"></span>
+            <span id="status-servidor">Verificando disponibilidade do assistente...</span>
+          </div>
+
+          <span>ORIENTAÇÃO • TECNOLOGIA • ACESSIBILIDADE</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACESSO RÁPIDO -->
+    <section class="mei-quick-section" id="consultas">
+      <div class="mei-container">
+
+        <div class="mei-section-heading">
+          <div>
+            <span class="mei-section-index">01 / ÁREAS DE ORIENTAÇÃO</span>
+            <h2>O que você precisa resolver?</h2>
+          </div>
+
+          <p>
+            Escolha um assunto para começar. O assistente pode ajudar
+            a esclarecer dúvidas e indicar informações de referência.
+          </p>
+        </div>
+
+        <div class="mei-topic-list">
+
+          <a class="mei-topic-row" href="/chat">
+            <span class="mei-topic-number">01</span>
+            <span class="mei-topic-name">
+              <strong>Abrir e formalizar meu MEI</strong>
+              <small>Cadastro, CNPJ, requisitos e atividades permitidas</small>
+            </span>
+            <span class="mei-topic-category">FORMALIZAÇÃO</span>
+            <span class="mei-topic-arrow">↗</span>
+          </a>
+
+          <a class="mei-topic-row" href="/chat">
+            <span class="mei-topic-number">02</span>
+            <span class="mei-topic-name">
+              <strong>Entender o DAS e os impostos</strong>
+              <small>Pagamento mensal, valores, vencimentos e atrasos</small>
+            </span>
+            <span class="mei-topic-category">TRIBUTAÇÃO</span>
+            <span class="mei-topic-arrow">↗</span>
+          </a>
+
+          <a class="mei-topic-row" href="/chat">
+            <span class="mei-topic-number">03</span>
+            <span class="mei-topic-name">
+              <strong>Conhecer minhas obrigações</strong>
+              <small>Declaração anual, prazos e responsabilidades</small>
+            </span>
+            <span class="mei-topic-category">DECLARAÇÕES</span>
+            <span class="mei-topic-arrow">↗</span>
+          </a>
+
+          <a class="mei-topic-row" href="/chat">
+            <span class="mei-topic-number">04</span>
+            <span class="mei-topic-name">
+              <strong>Consultar limites de faturamento</strong>
+              <small>Receita anual, crescimento e desenquadramento</small>
+            </span>
+            <span class="mei-topic-category">FATURAMENTO</span>
+            <span class="mei-topic-arrow">↗</span>
+          </a>
+
+          <a class="mei-topic-row" href="/chat">
+            <span class="mei-topic-number">05</span>
+            <span class="mei-topic-name">
+              <strong>Entender direitos e benefícios</strong>
+              <small>Previdência, funcionário e emissão de notas fiscais</small>
+            </span>
+            <span class="mei-topic-category">DIREITOS</span>
+            <span class="mei-topic-arrow">↗</span>
+          </a>
+
+          <a class="mei-topic-row" href="/chat">
+            <span class="mei-topic-number">06</span>
+            <span class="mei-topic-name">
+              <strong>Resolver questões com a Receita Federal</strong>
+              <small>CPF, CNPJ, Imposto de Renda e situação cadastral</small>
+            </span>
+            <span class="mei-topic-category">RECEITA FEDERAL</span>
+            <span class="mei-topic-arrow">↗</span>
+          </a>
+
+        </div>
+
+        <div class="mei-topic-footer">
+          <span>Não encontrou seu assunto?</span>
+          <a href="/chat">Escreva sua dúvida diretamente ao assistente ↗</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- JORNADA DO MEI -->
+    <section class="mei-journey-section" id="jornada">
+      <div class="mei-container">
+
+        <div class="mei-section-heading">
+          <div>
+            <span class="mei-section-index">02 / SUA JORNADA</span>
+            <h2>Do primeiro passo à gestão do negócio.</h2>
+          </div>
+
+          <p>
+            Ser MEI envolve diferentes etapas. Conhecer cada uma delas
+            ajuda a manter o negócio organizado e em dia.
+          </p>
+        </div>
+
+        <div class="mei-journey">
+
+          <article class="mei-journey-item">
+            <span class="mei-journey-marker">01</span>
+            <div class="mei-journey-content">
+              <span class="mei-journey-label">COMECE</span>
+              <h3>Formalização</h3>
+              <p>
+                Conheça os requisitos, verifique as atividades permitidas
+                e entenda como funciona a abertura do MEI.
+              </p>
+              <a href="/chat">Consultar formalização ↗</a>
+            </div>
+          </article>
+
+          <article class="mei-journey-item">
+            <span class="mei-journey-marker">02</span>
+            <div class="mei-journey-content">
+              <span class="mei-journey-label">ORGANIZE</span>
+              <h3>Administração</h3>
+              <p>
+                Entenda os pagamentos mensais, acompanhe seu faturamento
+                e conheça as responsabilidades da categoria.
+              </p>
+              <a href="/chat">Consultar obrigações ↗</a>
+            </div>
+          </article>
+
+          <article class="mei-journey-item">
+            <span class="mei-journey-marker">03</span>
+            <div class="mei-journey-content">
+              <span class="mei-journey-label">MANTENHA EM DIA</span>
+              <h3>Regularização</h3>
+              <p>
+                Saiba mais sobre declarações, débitos, prazos e procedimentos
+                relacionados à Receita Federal.
+              </p>
+              <a href="/chat">Consultar regularização ↗</a>
+            </div>
+          </article>
+
+          <article class="mei-journey-item">
+            <span class="mei-journey-marker">04</span>
+            <div class="mei-journey-content">
+              <span class="mei-journey-label">EVOLUA</span>
+              <h3>Crescimento</h3>
+              <p>
+                Compreenda os limites da categoria e as regras aplicáveis
+                quando sua atividade e seu faturamento aumentam.
+              </p>
+              <a href="/chat">Consultar crescimento ↗</a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOBRE O MEI -->
+    <section class="mei-about-section">
+      <div class="mei-container mei-about-layout">
+
+        <div class="mei-about-heading">
+          <span class="mei-section-index">03 / CONHEÇA A CATEGORIA</span>
+          <span class="mei-about-symbol" aria-hidden="true">MEI</span>
+          <h2>O que significa ser Microempreendedor Individual?</h2>
+        </div>
+
+        <div class="mei-about-text">
+          <p>
+            O Microempreendedor Individual é uma forma simplificada de
+            formalização para quem trabalha por conta própria e atende
+            aos requisitos legais da categoria.
+          </p>
+
+          <p>
+            A formalização permite obter um CNPJ e, conforme as regras
+            aplicáveis, emitir notas fiscais e ter acesso a benefícios
+            previdenciários.
+          </p>
+
+          <p>
+            Também existem responsabilidades, como o pagamento mensal
+            do DAS, a entrega da declaração anual e o respeito aos limites
+            e às condições para permanecer na categoria.
+          </p>
+
+          <div class="mei-about-note">
+            <span>IMPORTANTE</span>
+            <p>
+              As regras, os valores e os prazos podem mudar.
+              Consulte sempre as informações oficiais e atualizadas.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMO A PLATAFORMA AJUDA -->
+    <section class="mei-method-section">
+      <div class="mei-container">
+
+        <div class="mei-section-heading">
+          <div>
+            <span class="mei-section-index">04 / COMO UTILIZAR</span>
+            <h2>Da dúvida à informação.</h2>
+          </div>
+
+          <p>
+            O MEI Orienta combina inteligência artificial e consulta
+            a materiais de referência para apoiar sua busca por informação.
+          </p>
+        </div>
+
+        <div class="mei-method-grid">
+
+          <article class="mei-method-item">
+            <span class="mei-method-number">01</span>
+            <div class="mei-method-symbol">?</div>
+            <h3>Apresente sua dúvida</h3>
+            <p>Escreva sua pergunta com suas próprias palavras, sem precisar usar termos técnicos.</p>
+          </article>
+
+          <article class="mei-method-item">
+            <span class="mei-method-number">02</span>
+            <div class="mei-method-symbol">⌕</div>
+            <h3>Consulte a informação</h3>
+            <p>O sistema busca conteúdos relacionados em sua base de conhecimento e em fontes oficiais.</p>
+          </article>
+
+          <article class="mei-method-item">
+            <span class="mei-method-number">03</span>
+            <div class="mei-method-symbol">✳</div>
+            <h3>Receba uma explicação</h3>
+            <p>A inteligência artificial organiza as informações em uma resposta de linguagem simples.</p>
+          </article>
+
+          <article class="mei-method-item">
+            <span class="mei-method-number">04</span>
+            <div class="mei-method-symbol">✓</div>
+            <h3>Confira as referências</h3>
+            <p>Consulte os documentos e os canais oficiais para confirmar as informações importantes.</p>
+          </article>
+
+        </div>
+
+        <div class="mei-method-action">
+          <p>Pronto para esclarecer sua dúvida?</p>
+          <a href="/chat" class="mei-main-link">
+            Acessar o MEI Orienta <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ACESSIBILIDADE -->
+    <section class="mei-accessibility-section" id="acessibilidade">
+      <div class="mei-container mei-accessibility-layout">
+
+        <div class="mei-accessibility-copy">
+          <span class="mei-section-index">05 / ACESSIBILIDADE</span>
+          <h2>Informação compreensível para diferentes pessoas.</h2>
+          <p>
+            A experiência do MEI Orienta busca ampliar as formas de
+            interação e tornar o acesso ao conhecimento mais inclusivo.
+          </p>
+        </div>
+
+        <div class="mei-accessibility-list">
+          <div class="mei-accessibility-item">
+            <span class="mei-accessibility-icon">01</span>
+            <div>
+              <strong>Interação por voz</strong>
+              <small>Faça perguntas utilizando o recurso de voz.</small>
+            </div>
+          </div>
+
+          <div class="mei-accessibility-item">
+            <span class="mei-accessibility-icon">02</span>
+            <div>
+              <strong>Reprodução de respostas</strong>
+              <small>Utilize a leitura em voz alta das respostas.</small>
+            </div>
+          </div>
+
+          <div class="mei-accessibility-item">
+            <span class="mei-accessibility-icon">03</span>
+            <div>
+              <strong>Tradução para Libras</strong>
+              <small>Recurso de apoio à acessibilidade em Libras.</small>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FONTES E DOCUMENTOS -->
+    <section class="mei-library-section" id="fontes">
+      <div class="mei-container">
+
+        <div class="mei-library-heading">
+          <div>
+            <span class="mei-section-index">06 / BASE DE CONHECIMENTO</span>
+            <h2>Informação que você pode consultar.</h2>
+            <p>
+              Veja os documentos utilizados como referência pelo assistente.
+              Sempre que possível, acesse o material original para conferir os detalhes.
+            </p>
+          </div>
+
+          <div class="mei-library-stamp">
+            <span>FONTES</span>
+            <strong>DE<br>CONSULTA</strong>
+          </div>
+        </div>
+
+        <div class="mei-library-panel">
+          <div class="mei-library-panel-header">
+            <div>
+              <span class="mei-library-status-dot"></span>
+              <strong>Documentos disponíveis</strong>
+            </div>
+            <span class="mei-library-caption">BASE DE REFERÊNCIA DO ASSISTENTE</span>
+          </div>
+
+          <ul id="lista-documentos" class="mei-document-list">
+            <li class="mei-document-loading">Carregando documentos...</li>
+          </ul>
+
+          <div class="mei-library-footer">
+            <span>As referências podem ser atualizadas ao longo do tempo.</span>
+            <span>SEBRAE • RECEITA FEDERAL</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CHAMADA FINAL -->
+    <section class="mei-final-section">
+      <div class="mei-container mei-final-content">
+        <span class="mei-section-index">MEI ORIENTA</span>
+        <h2>Uma dúvida esclarecida<br>é um passo a mais no seu negócio.</h2>
+        <p>
+          Encontre orientação sobre MEI e Receita Federal.
+          Pergunte, consulte e informe-se.
+        </p>
+
+        <a href="/chat" class="mei-final-button">
+          Começar agora <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="mei-footer">
+    <div class="mei-container mei-footer-content">
+
+      <a class="mei-brand" href="/" aria-label="MEI Orienta - Início">
+        <img src="icon.svg" alt="">
+        <span>MEI <strong>ORIENTA</strong></span>
+      </a>
+
+      <p>
+        Projeto acadêmico desenvolvido na FMU.
+        As respostas são geradas por inteligência artificial e devem ser
+        conferidas nos canais oficiais.
+      </p>
+
+      <a href="https://portal.fmu.br/" target="_blank" rel="noopener" class="mei-footer-fmu">
+        <img src="logo-fmu.png" alt="FMU">
+      </a>
+
+    </div>
+  </footer>
+
+  <!-- STATUS DO SERVIDOR E DOCUMENTOS -->
+  <script>
+  (function () {
+    const status = document.getElementById("status-servidor");
+    let tentativas = 0;
+
+    async function verificarServidor() {
+      try {
+        const resposta = await fetch("/api/status", {
+          cache: "no-store"
+        });
+
+        if (!resposta.ok) {
+          throw new Error("Não foi possível consultar o servidor.");
+        }
+
+        const dados = await resposta.json();
+
+        if (dados.pronto) {
+          status.textContent = "Assistente disponível para atendimento";
+          status.classList.add("mei-status-online");
+          mostrarDocumentos(dados);
+          return;
+        }
+
+        if (dados.erro) {
+          status.textContent = "Assistente indisponível no momento";
+          return;
+        }
+
+        status.textContent = "Preparando o assistente...";
+      } catch (erro) {
+        status.textContent = "Conectando ao servidor...";
+      }
+
+      tentativas++;
+
+      if (tentativas < 90) {
+        setTimeout(verificarServidor, 3000);
+      }
+    }
+
+    function escaparHTML(texto) {
+      return String(texto)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function mostrarDocumentos(dados) {
+      const lista = document.getElementById("lista-documentos");
+
+      if (!lista || !Array.isArray(dados.documentos)) {
+        return;
+      }
+
+      if (dados.documentos.length === 0) {
+        lista.innerHTML = `
+          <li class="mei-document-loading">
+            Nenhum documento foi encontrado na base de conhecimento.
+          </li>`;
+        return;
+      }
+
+      let html = dados.documentos.map((doc) => {
+        const arquivo = String(doc.arquivo || "");
+        const titulo = escaparHTML(doc.titulo || arquivo);
+        const ano = doc.ano
+          ? ` <small>(edição ${Number(doc.ano)})</small>`
+          : "";
+
+        return `
+          <li class="mei-document-item">
+            <span class="mei-document-icon">PDF</span>
+            <div class="mei-document-info">
+              <a href="/documentos/${encodeURIComponent(arquivo)}"
+                 target="_blank" rel="noopener">
+                ${titulo}${ano}
+              </a>
+              <small>Documento de referência</small>
+            </div>
+            <span class="mei-document-arrow" aria-hidden="true">↗</span>
+          </li>`;
+      }).join("");
+
+      const baseWeb = dados.base_web || {};
+      let descricaoWeb =
+        "Conferência com conteúdos oficiais do Sebrae e da Receita Federal";
+
+      if (baseWeb.paginas) {
+        descricaoWeb =
+          `${Number(baseWeb.paginas)} páginas oficiais do Sebrae e da Receita Federal`;
+
+        if (baseWeb.atualizada_em) {
+          const data = new Date(baseWeb.atualizada_em);
+
+          if (!isNaN(data.getTime())) {
+            descricaoWeb +=
+              ` — atualização em ${data.toLocaleDateString("pt-BR")}`;
+          }
+        }
+      }
+
+      html += `
+        <li class="mei-document-item mei-web-source">
+          <span class="mei-document-icon">WEB</span>
+          <div class="mei-document-info">
+            <strong>Consulta a fontes oficiais</strong>
+            <small>${escaparHTML(descricaoWeb)}</small>
+          </div>
+          <span class="mei-document-arrow" aria-hidden="true">↗</span>
+        </li>`;
+
+      lista.innerHTML = html;
+    }
+
+    verificarServidor();
+  })();
+  </script>
+
+  <!-- EFEITO DO CABEÇALHO -->
+  <script>
+  (function () {
+    const cabecalho = document.getElementById("cabecalho");
+
+    function atualizarCabecalho() {
+      cabecalho.classList.toggle(
+        "mei-header-scrolled",
+        window.scrollY > 10
+      );
+    }
+
+    window.addEventListener("scroll", atualizarCabecalho, {
+      passive: true
+    });
+
+    atualizarCabecalho();
+  })();
+  </script>
+
+  <script src="tema.js?v=20"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js" async></script>
+
+</body>
+</html>

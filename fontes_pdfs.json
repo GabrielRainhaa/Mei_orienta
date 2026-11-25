@@ -1,0 +1,104 @@
+{
+  "_aviso": "Lista dos PDFs da base e de onde baixar a versão mais recente. Só Sebrae e Receita Federal são aceitos. 'ano_minimo': só entram PDFs desse ano em diante (o ano vem dos metadados e da capa do PDF); edições antigas ficam como 'antigo' no relatório e são aceitas sozinhas quando a fonte publicar a edição nova. 'arquivo' = nome na raiz do projeto (começa com número, ex.: 4-Nome.pdf); o PDF é SUBSTITUÍDO quando a fonte publica versão nova. Com 'pagina_indice' + 'padrao', o script procura nessa página o link mais novo e usa 'url' como alternativa.",
+  "ano_minimo": 2026,
+  "fontes": [
+    {
+      "arquivo": "4-Perguntas&Respostas3_MEI.pdf",
+      "titulo": "Perguntas e Respostas MEI e Simei (Receita Federal / Comitê Gestor do Simples Nacional)",
+      "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/pergunta-resposta/PerguntaoMEI.pdf",
+      "obs": "EXCEÇÃO ao filtro de 2026 (ano_minimo=0): é o PDF mais geral sobre MEI e a edição online mais recente é de 29/04/2025. Quando a Receita publicar a de 2026, ela substitui esta sozinha. A conferência ao vivo com os sites cobre eventuais mudanças. | 23/11/2026: o arquivo local é a edição de abr/2023; a edição online é de 29/04/2025 e entra no próximo atualizar_base.py. O Comitê Gestor também publica o mesmo PDF em /Arquivos/manual/ (urls_alternativas).",
+      "ativo": true,
+      "ano_minimo": 0,
+      "urls_alternativas": [
+        "https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/PerguntaoMEI.pdf"
+      ]
+    },
+    {
+      "arquivo": "5-Impostos_PF_MEI.pdf",
+      "titulo": "Imposto de Renda Pessoa Física — Perguntas e Respostas (edição 2026)",
+      "url": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/dirpf/p-r-irpf-2026-v1-00-2026-04-23.pdf",
+      "pagina_indice": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/dirpf",
+      "padrao": "p-r-irpf-\\d{4}[^/]*\\.pdf",
+      "obs": "Página de listagem confirmada em 23/11/2026: lista 'Perguntas e Respostas IRPF 2026' (modificado em 27/04/2026). O script escolhe sozinho a edição mais nova que aparecer ali.",
+      "ativo": true
+    },
+    {
+      "arquivo": "7-Perguntas&Respostas_SimplesNacional.pdf",
+      "titulo": "Perguntas e Respostas Simples Nacional (Comitê Gestor)",
+      "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/PerguntaoSN.pdf",
+      "ativo": true
+    },
+    {
+      "arquivo": "8-Exclusao_SimplesNacional_2026.pdf",
+      "titulo": "Exclusão do Simples Nacional 2026 — Perguntas e Respostas (inclui MEI)",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/marco/receita-federal-emite-termo-de-exclusao-para-devedores-do-simples-nacional-incluindo-mei/perguntas-e-respostas-contribuinte-2026.pdf",
+      "ativo": true,
+      "obs": "Reativado em 23/11/2026: PDF de 2026 da Receita Federal sobre exclusão do Simples Nacional por débitos, com perguntas específicas sobre o MEI."
+    },
+    {
+      "arquivo": "9-Perguntas&Respostas_PessoaJuridica_2026.pdf",
+      "titulo": "Perguntas e Respostas da Pessoa Jurídica 2026 (Receita Federal)",
+      "url": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/perguntas-e-respostas/ecf/perguntas-e-respostas-da-pessoa-juridica-2026/@@download/file",
+      "ativo": false,
+      "obs": "Desligado de propósito: ~8 MB e 862 páginas, fora do foco MEI/IRPF e deixa o build mais pesado. Mude para true se quiser. | Desligado em 23/11/2026: fora da seleção dos PDFs mais gerais. Mude 'ativo' para true para voltar a vigiar."
+    },
+    {
+      "arquivo": "10-Manual_DASN-SIMEI.pdf",
+      "titulo": "Manual da DASN-SIMEI (Receita Federal)",
+      "url": "https://www8.receita.fazenda.gov.br/simplesnacional/arquivos/manual/manual_dasn-simei.pdf",
+      "obs": "Edição online: set/2024. Entra quando for atualizada. | Desligado em 23/11/2026: fora da seleção dos PDFs mais gerais. Mude 'ativo' para true para voltar a vigiar.",
+      "ativo": false
+    },
+    {
+      "arquivo": "11-Manual_Parcelamento_MEI.pdf",
+      "titulo": "Manual do Parcelamento de Débitos do MEI (Receita Federal)",
+      "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/Manual_Parcelamento_MEI.pdf",
+      "obs": "Entra quando houver edição de 2026. | Desligado em 23/11/2026: fora da seleção dos PDFs mais gerais. Mude 'ativo' para true para voltar a vigiar.",
+      "ativo": false
+    },
+    {
+      "arquivo": "12-Manual_Restituicao_MEI.pdf",
+      "titulo": "Manual da Restituição do MEI (Receita Federal)",
+      "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/MANUAL_RESTITUICAO_MEI.pdf",
+      "obs": "Edição online é do fim de 2025. Entra quando houver edição de 2026. | Desligado em 23/11/2026: fora da seleção dos PDFs mais gerais. Mude 'ativo' para true para voltar a vigiar.",
+      "ativo": false
+    },
+    {
+      "arquivo": "13-Sebrae_Deveres_Obrigacoes_MEI.pdf",
+      "titulo": "Conheça os deveres e obrigações do MEI (Sebrae)",
+      "url": "https://sebrae.com.br/content/dam/portal-sebrae/na/midias/documentos/pdfs/ebook_conheca-os-deveres-e-obrigacoes-do-MEI.pdf",
+      "obs": "Edição online: 05/2025. O Sebrae não tem PDF de 2026 sobre MEI; o conteúdo recente dele está em páginas (fontes_oficiais.json). | Desligado em 23/11/2026: fora da seleção dos PDFs mais gerais. Mude 'ativo' para true para voltar a vigiar.",
+      "ativo": false
+    },
+    {
+      "arquivo": "6-Manual_IRRF_Mafon.pdf",
+      "titulo": "Manual do Imposto de Renda Retido na Fonte — Mafon (Receita Federal)",
+      "url": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/manuais/irrf/mafon-2025.pdf",
+      "pagina_indice": "https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/manuais/irrf",
+      "padrao": "mafon-\\d{4}[^/]*\\.pdf",
+      "obs": "Substitui a antiga '6-Cartilha_Impostos' (era o Mafon 2025). Em 23/11/2026 a listagem da Receita ainda mostra o Mafon 2025 como o mais novo; o Mafon 2026 entra sozinho quando sair. | Desligado em 23/11/2026: fora da seleção dos PDFs mais gerais. Mude 'ativo' para true para voltar a vigiar.",
+      "ativo": false
+    },
+    {
+      "arquivo": "14-Sebrae_Direitos_Previdenciarios_MEI.pdf",
+      "titulo": "Guia rápido: regularidade do MEI e direitos previdenciários (Sebrae)",
+      "url": "https://sebrae.com.br/content/dam/portal-sebrae/na/midias/documentos/pdfs/ebook_direitos-previdenciarios-mei-beneficios-inss.pdf",
+      "obs": "Material recente do Sebrae sobre MEI; o ano é checado pelo filtro ao baixar (se for anterior a 2026, fica como 'antigo'). | Desligado em 23/11/2026: fora da seleção dos PDFs mais gerais. Mude 'ativo' para true para voltar a vigiar.",
+      "ativo": false
+    },
+    {
+      "arquivo": "15-Roteiro_Opcao_SimplesNacional_2027.pdf",
+      "titulo": "Roteiro da Opção pelo Simples Nacional para 2027 (Comitê Gestor, publicado em ago/2026)",
+      "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/Roteiro%20da%20op%C3%A7%C3%A3o%20pelo%20Simles%20Nacional%20para%20o%20ano%20de%202027.pdf",
+      "obs": "Novo em 23/11/2026. Explica a opção pelo Simples Nacional/Simei para 2027 (prazo em setembro de 2026) e o desenquadramento do MEI ao ser excluído do Simples.",
+      "ativo": true
+    },
+    {
+      "arquivo": "16-Manual_Opcao_IBS_CBS_SimplesNacional.pdf",
+      "titulo": "Manual da Opção pelo Regime Regular do IBS e da CBS no Simples Nacional (set/2026)",
+      "url": "https://www8.receita.fazenda.gov.br/SimplesNacional/Arquivos/manual/Manual%20op%C3%A7%C3%A3o%20regime%20regular%20IBS%20e%20CBS%20no%20Simples%20Nacional.pdf",
+      "obs": "Encontrado em 23/11/2026 (publicado em 01/09/2026). Desligado: trata da Reforma Tributária para empresas do Simples, pouco do MEI. Mude 'ativo' para true se quiser.",
+      "ativo": false
+    }
+  ]
+}

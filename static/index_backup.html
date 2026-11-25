@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101f35">
+  <meta name="description" content="MEI Orienta: sua central de orientação sobre MEI, impostos, DAS, CNPJ e Receita Federal.">
+  <title>MEI Orienta | Simplificando sua jornada empreendedora</title>
+
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    try {
+      const tema = localStorage.getItem("chatbot-mei-tema");
+      if (tema === "dark" || tema === "light") {
+        document.documentElement.setAttribute("data-theme", tema);
+      }
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="home.css?v=1">
+</head>
+
+<body>
+
+<header class="mo-header" id="cabecalho">
+  <div class="mo-container mo-header-inner">
+
+    <a class="mo-brand" href="/" aria-label="MEI Orienta - Página inicial">
+      <img src="icon.svg" alt="">
+      <span>mei<span class="mo-brand-highlight">orienta</span></span>
+    </a>
+
+    <nav class="mo-nav" aria-label="Navegação principal">
+      <a href="#solucoes">Soluções</a>
+      <a href="#sobre">Sobre o MEI</a>
+      <a href="#funcionamento">Como funciona</a>
+
+      <button type="button" class="mo-theme-button botao-tema" aria-label="Mudar tema" title="Mudar tema">
+        <svg class="icone-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>
+        </svg>
+        <svg class="icone-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+      </button>
+
+      <a class="mo-header-cta" href="/chat">
+        Acessar assistente
+        <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
+
+    <a class="mo-fmu" href="https://portal.fmu.br/" target="_blank" rel="noopener" aria-label="Portal da FMU">
+      <img src="logo-fmu.png" alt="FMU">
+    </a>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="mo-hero">
+    <div class="mo-container mo-hero-grid">
+
+      <div class="mo-hero-content">
+
+        <div class="mo-eyebrow">
+          <span class="mo-status-dot"></span>
+          TECNOLOGIA A FAVOR DO EMPREENDEDOR
+        </div>
+
+        <h1>
+          Empreender fica mais simples quando você tem
+          <span>orientação.</span>
+        </h1>
+
+        <p class="mo-hero-description">
+          Tire suas dúvidas sobre MEI, impostos e Receita Federal com
+          um assistente virtual inteligente, preparado para explicar
+          assuntos complexos de um jeito simples.
+        </p>
+
+        <div class="mo-hero-actions">
+          <a href="/chat" class="mo-button-primary">
+            Converse com o assistente
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <a href="#solucoes" class="mo-button-secondary">
+            Conheça a plataforma
+          </a>
+        </div>
+
+        <div class="mo-trust-row">
+          <div class="mo-trust-icon">✓</div>
+          <span>Gratuito</span>
+          <span class="mo-trust-separator">•</span>
+          <span>Sem cadastro</span>
+          <span class="mo-trust-separator">•</span>
+          <span>Disponível a qualquer hora</span>
+        </div>
+
+        <div class="mo-server-status">
+          <span class="mo-status-indicator"></span>
+          <span id="status-servidor">Verificando disponibilidade...</span>
+        </div>
+
+      </div>
+
+      <!-- PAINEL DE DEMONSTRAÇÃO -->
+      <div class="mo-hero-visual">
+
+        <div class="mo-visual-glow"></div>
+
+        <div class="mo-floating-label mo-label-top">
+          <span>✦</span> Orientação inteligente
+        </div>
+
+        <div class="mo-assistant-card">
+
+          <div class="mo-assistant-header">
+            <div class="mo-assistant-avatar">
+              <img src="icon.svg" alt="">
+            </div>
+
+            <div class="mo-assistant-info">
+              <strong>MEI Orienta</strong>
+              <span><i></i> Assistente disponível</span>
+            </div>
+
+            <div class="mo-assistant-menu">•••</div>
+          </div>
+
+          <div class="mo-chat-content">
+
+            <div class="mo-chat-date">UMA CONVERSA MAIS SIMPLES</div>
+
+            <div class="mo-message mo-user-message">
+              Quanto eu preciso pagar por mês sendo MEI?
+            </div>
+
+            <div class="mo-message mo-ai-message">
+              <div class="mo-ai-label">MEI ORIENTA <span>✦</span></div>
+
+              O MEI paga mensalmente o DAS, uma guia que reúne os tributos obrigatórios.
+
+              <div class="mo-answer-highlight">
+                <span>💡</span>
+                O valor depende da atividade exercida e das regras vigentes.
+              </div>
+
+              <div class="mo-source">
+                <span>✓</span> Informação baseada em documentos oficiais
+              </div>
+            </div>
+
+            <div class="mo-chat-input">
+              <span>Digite sua dúvida...</span>
+              <div>↑</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mo-floating-label mo-label-bottom">
+          <span>✓</span> Respostas com fontes de consulta
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mo-hero-decoration"></div>
+  </section>
+
+  <!-- FAIXA DE BENEFÍCIOS -->
+  <section class="mo-benefits">
+    <div class="mo-container mo-benefits-grid">
+
+      <div class="mo-benefit">
+        <span class="mo-benefit-icon">✦</span>
+        <div>
+          <strong>Inteligência artificial</strong>
+          <span>Respostas em linguagem simples</span>
+        </div>
+      </div>
+
+      <div class="mo-benefit">
+        <span class="mo-benefit-icon">⌕</span>
+        <div>
+          <strong>Fontes de consulta</strong>
+          <span>Informações fundamentadas</span>
+        </div>
+      </div>
+
+      <div class="mo-benefit">
+        <span class="mo-benefit-icon">◉</span>
+        <div>
+          <strong>Acessibilidade</strong>
+          <span>Recursos para diferentes públicos</span>
+        </div>
+      </div>
+
+      <div class="mo-benefit">
+        <span class="mo-benefit-icon">↗</span>
+        <div>
+          <strong>Acesso gratuito</strong>
+          <span>Sem necessidade de cadastro</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOLUÇÕES -->
+  <section class="mo-section" id="solucoes">
+    <div class="mo-container">
+
+      <div class="mo-section-heading">
+        <span class="mo-section-tag">COMO PODEMOS AJUDAR?</span>
+        <h2>Informação para cada etapa<br>da sua jornada.</h2>
+        <p>
+          Encontre orientação para administrar seu negócio e entender
+          suas obrigações como empreendedor.
+        </p>
+      </div>
+
+      <div class="mo-solutions-grid">
+
+        <article class="mo-solution-card">
+          <div class="mo-solution-icon">＋</div>
+          <span class="mo-card-number">01</span>
+          <h3>Formalização</h3>
+          <p>Descubra como abrir seu MEI, criar seu CNPJ e conhecer as atividades permitidas.</p>
+          <a href="/chat">Tirar dúvidas <span>→</span></a>
+        </article>
+
+        <article class="mo-solution-card">
+          <div class="mo-solution-icon">R$</div>
+          <span class="mo-card-number">02</span>
+          <h3>Impostos e DAS</h3>
+          <p>Entenda os pagamentos mensais, vencimentos, atrasos e regularização de débitos.</p>
+          <a href="/chat">Tirar dúvidas <span>→</span></a>
+        </article>
+
+        <article class="mo-solution-card">
+          <div class="mo-solution-icon">▤</div>
+          <span class="mo-card-number">03</span>
+          <h3>Declarações</h3>
+          <p>Saiba como funciona a declaração anual do MEI e suas obrigações com a Receita.</p>
+          <a href="/chat">Tirar dúvidas <span>→</span></a>
+        </article>
+
+        <article class="mo-solution-card">
+          <div class="mo-solution-icon">↗</div>
+          <span class="mo-card-number">04</span>
+          <h3>Faturamento</h3>
+          <p>Conheça os limites de faturamento e o que acontece quando seu negócio cresce.</p>
+          <a href="/chat">Tirar dúvidas <span>→</span></a>
+        </article>
+
+        <article class="mo-solution-card">
+          <div class="mo-solution-icon">♙</div>
+          <span class="mo-card-number">05</span>
+          <h3>Direitos e benefícios</h3>
+          <p>Entenda os direitos previdenciários, contratação de funcionário e emissão de notas.</p>
+          <a href="/chat">Tirar dúvidas <span>→</span></a>
+        </article>
+
+        <article class="mo-solution-card">
+          <div class="mo-solution-icon">⌂</div>
+          <span class="mo-card-number">06</span>
+          <h3>Receita Federal</h3>
+          <p>Tire dúvidas sobre CPF, CNPJ, Imposto de Renda e situação cadastral.</p>
+          <a href="/chat">Tirar dúvidas <span>→</span></a>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOBRE O MEI -->
+  <section class="mo-section mo-about-section" id="sobre">
+    <div class="mo-container mo-about-grid">
+
+      <div class="mo-about-visual">
+        <div class="mo-about-card">
+          <span class="mo-about-card-label">SEU NEGÓCIO, SEU FUTURO</span>
+          <div class="mo-about-symbol">M</div>
+          <strong>Pequenos negócios.<br>Grandes possibilidades.</strong>
+          <span class="mo-about-line"></span>
+          <small>Informação é o primeiro passo para crescer.</small>
+        </div>
+        <div class="mo-about-decoration">+</div>
+      </div>
+
+      <div class="mo-about-content">
+        <span class="mo-section-tag">ENTENDA O UNIVERSO MEI</span>
+        <h2>O que significa ser um Microempreendedor Individual?</h2>
+
+        <p>
+          O MEI é uma modalidade simplificada de formalização para
+          trabalhadores autônomos e pequenos empreendedores.
+        </p>
+
+        <p>
+          Com o registro, o empreendedor passa a ter CNPJ, pode emitir
+          notas fiscais e tem acesso a direitos e benefícios
+          previdenciários, desde que cumpra os requisitos legais.
+        </p>
+
+        <p>
+          Mas junto com as oportunidades surgem responsabilidades:
+          pagamento mensal do DAS, declaração anual e respeito aos
+          limites e regras da categoria.
+        </p>
+
+        <div class="mo-about-points">
+          <div><span>✓</span> Formalização do negócio</div>
+          <div><span>✓</span> Acesso a benefícios previdenciários</div>
+          <div><span>✓</span> Tributação simplificada</div>
+        </div>
+
+        <a href="/chat" class="mo-text-link">Pergunte ao MEI Orienta <span>→</span></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FUNCIONAMENTO -->
+  <section class="mo-section mo-how-section" id="funcionamento">
+    <div class="mo-container">
+
+      <div class="mo-section-heading">
+        <span class="mo-section-tag">SIMPLES DO INÍCIO AO FIM</span>
+        <h2>Como o MEI Orienta funciona?</h2>
+        <p>Uma experiência de orientação pensada para facilitar seu dia a dia.</p>
+      </div>
+
+      <div class="mo-steps">
+
+        <div class="mo-step">
+          <div class="mo-step-number">01</div>
+          <h3>Faça sua pergunta</h3>
+          <p>Escreva sua dúvida usando suas próprias palavras, sem precisar conhecer termos técnicos.</p>
+        </div>
+
+        <div class="mo-step">
+          <div class="mo-step-number">02</div>
+          <h3>Buscamos informações</h3>
+          <p>O sistema consulta sua base de conhecimento com documentos e materiais de referência.</p>
+        </div>
+
+        <div class="mo-step">
+          <div class="mo-step-number">03</div>
+          <h3>A IA organiza a resposta</h3>
+          <p>A inteligência artificial transforma as informações encontradas em uma explicação mais acessível.</p>
+        </div>
+
+        <div class="mo-step">
+          <div class="mo-step-number">04</div>
+          <h3>Consulte as fontes</h3>
+          <p>Você pode conferir os documentos e buscar orientação nos canais oficiais.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACESSIBILIDADE -->
+  <section class="mo-accessibility">
+    <div class="mo-container mo-accessibility-inner">
+      <div>
+        <span class="mo-section-tag">ACESSO PARA TODOS</span>
+        <h2>Conhecimento deve ser acessível.</h2>
+        <p>
+          O MEI Orienta conta com recursos que ajudam a tornar a
+          experiência mais inclusiva, como interação por voz,
+          reprodução de respostas e tradução para Libras.
+        </p>
+      </div>
+
+      <div class="mo-accessibility-items">
+        <div><span>🎙</span> Pergunte por voz</div>
+        <div><span>🔊</span> Ouça as respostas</div>
+        <div><span>🤟</span> Tradução para Libras</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOCUMENTOS -->
+  <section class="mo-section mo-documents-section">
+    <div class="mo-container mo-documents-grid">
+
+      <div>
+        <span class="mo-section-tag">INFORMAÇÃO E CONFIANÇA</span>
+        <h2>Conhecimento baseado em documentos.</h2>
+        <p>
+          O chatbot utiliza materiais de referência sobre o MEI,
+          Simples Nacional e Imposto de Renda para apoiar suas respostas.
+        </p>
+        <p class="mo-document-note">
+          As informações podem mudar. Sempre confira obrigações,
+          valores e prazos nos canais oficiais.
+        </p>
+      </div>
+
+      <div class="mo-documents-box">
+        <div class="mo-documents-title">
+          <span>▤</span>
+          <div>
+            <strong>Base de conhecimento</strong>
+            <small>Documentos utilizados pelo assistente</small>
+          </div>
+        </div>
+
+        <ul id="lista-documentos" class="mo-documents-list">
+          <li>Carregando documentos...</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="mo-final-cta">
+    <div class="mo-container">
+      <div class="mo-final-cta-content">
+        <span class="mo-section-tag">SEU PRÓXIMO PASSO COMEÇA AQUI</span>
+        <h2>Não fique com dúvidas.<br><span>Conte com o MEI Orienta.</span></h2>
+        <p>Comece agora. É gratuito, simples e não precisa de cadastro.</p>
+        <a href="/chat" class="mo-button-primary">
+          Começar uma conversa <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mo-footer">
+  <div class="mo-container mo-footer-inner">
+    <a class="mo-brand" href="/">
+      <img src="icon.svg" alt="">
+      <span>mei<span class="mo-brand-highlight">orienta</span></span>
+    </a>
+
+    <p>
+      Projeto acadêmico desenvolvido na FMU.
+      As respostas são geradas por IA e devem ser conferidas nos canais oficiais.
+    </p>
+
+    <a href="https://portal.fmu.br/" target="_blank" rel="noopener" class="mo-footer-fmu">
+      <img src="logo-fmu.png" alt="FMU">
+    </a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const el = document.getElementById("status-servidor");
+  let tentativas = 0;
+
+  async function checar() {
+    try {
+      const resposta = await fetch("/api/status", { cache: "no-store" });
+      const dados = await resposta.json();
+
+      if (dados.pronto) {
+        el.textContent = "Assistente disponível";
+        el.classList.add("mo-online");
+        mostrarDocumentos(dados);
+        return;
+      }
+
+      if (dados.erro) {
+        el.textContent = "Assistente indisponível no momento";
+        return;
+      }
+
+      el.textContent = "Preparando o assistente...";
+    } catch (erro) {
+      el.textContent = "Conectando ao servidor...";
+    }
+
+    if (++tentativas < 90) {
+      setTimeout(checar, 3000);
+    }
+  }
+
+  function mostrarDocumentos(dados) {
+    const lista = document.getElementById("lista-documentos");
+
+    if (!lista || !Array.isArray(dados.documentos) || !dados.documentos.length) {
+      return;
+    }
+
+    const escapar = (texto) =>
+      String(texto)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+
+    let html = dados.documentos.map((doc) => {
+      const titulo = escapar(doc.titulo || doc.arquivo);
+      const ano = doc.ano
+        ? ` <small>(edição ${Number(doc.ano)})</small>`
+        : "";
+
+      return `
+        <li>
+          <span class="mo-doc-check">✓</span>
+          <a href="/documentos/${encodeURIComponent(doc.arquivo)}"
+             target="_blank" rel="noopener">
+            ${titulo}${ano}
+          </a>
+        </li>`;
+    }).join("");
+
+    const web = dados.base_web || {};
+    let textoWeb = "Conferência com os sites oficiais do Sebrae e da Receita Federal";
+
+    if (web.paginas) {
+      const quando = web.atualizada_em ? new Date(web.atualizada_em) : null;
+
+      textoWeb =
+        `${Number(web.paginas)} páginas oficiais do Sebrae e da Receita Federal`;
+
+      if (quando && !isNaN(quando)) {
+        textoWeb += ` (última coleta: ${quando.toLocaleDateString("pt-BR")})`;
+      }
+    }
+
+    html += `
+      <li>
+        <span class="mo-doc-check">✓</span>
+        <span>${escapar(textoWeb)}</span>
+      </li>`;
+
+    lista.innerHTML = html;
+  }
+
+  checar();
+})();
+</script>
+
+<script>
+(function () {
+  const cabecalho = document.getElementById("cabecalho");
+
+  function atualizarCabecalho() {
+    cabecalho.classList.toggle("mo-scrolled", window.scrollY > 10);
+  }
+
+  window.addEventListener("scroll", atualizarCabecalho, { passive: true });
+  atualizarCabecalho();
+})();
+</script>
+
+<script src="tema.js?v=20"></script>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js" async></script>
+
+</body>
+</html>
